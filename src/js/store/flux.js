@@ -1,43 +1,64 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			apiUrl: "https://www.swapi.tech/api/",
+			people: JSON.parse(localStorage.getItem("people")) || [],
+			vehicles: JSON.parse(localStorage.getItem("vehicles")) || [],
+			planets: JSON.parse(localStorage.getItem("planets")) || [],
+			favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+			todolist: [],
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+			getDataApi: async (dataApi) => {
 				const store = getStore();
+				if (store[dataApi].length === 10) return;
+				try {
+					const response = await fetch(store.apiUrl + dataApi);
+					if (response.ok) {
+						const data = await response.json();
+						const listResult = data.results;
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+						listResult.forEach(async (element) => {
+							const detailResponse = await fetch(element.url);
+							const detailData = await detailResponse.json()
+							setStore({ [dataApi]: [...store[dataApi], detailData.result] });
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+							//cargamos el local storage
+							if (store[dataApi].length == 10) {
+								let stringifiedValue = JSON.stringify(store[dataApi]);
+								localStorage.setItem(dataApi, stringifiedValue)
+							}
+						});//fin del forEach
+
+
+
+
+					}//fin del if response
+				} catch (error) {
+					console.log("fallo la Api");
+				}
+
+			},//fin del getDataApi
+
+
+			getHandleChange: (favorite) => {
+				//console.log("entro en getHandleChange" + favorite);
+				const store = getStore();
+				setStore({ todolist: [...store.todolist, favorite] })
+				//console.log("todo list " + store.todolist);
+			},
+			//borrar contaco
+			deleteFavorite: (id) => {
+				const store = getStore();
+				//creamos un array nuevo sin el elemento que es igual al index qe nos paso
+				setStore({ todolist: store.todolist.filter((favorite, index) => id != index) });
+
+			},
+
+
+
 		}
 	};
 };

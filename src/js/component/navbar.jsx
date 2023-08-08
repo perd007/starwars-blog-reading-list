@@ -14,7 +14,7 @@ export const Navbar = () => {
 	}
 	return (
 		<>
-			<nav className="navbar  bg-black mb-3  d-flex justify-content-between">
+			<nav className="navbar  bg-black mb-3 d-flex justify-content-between" >
 				<Link to="/" >
 					<img src={startWarsImage} className="  ms-3 d-inline-block aling-text-top " alt="logo" />
 				</Link>

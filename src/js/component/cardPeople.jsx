@@ -15,8 +15,7 @@ export const CardPeople = (props) => {
     }
     return (
         <>
-
-            <div className=" row m-3 " key={props.id}  >
+            <div className=" row m-3  " key={props.id}  >
                 <div className="card col-12 bg-dark text-white">
                     <img src={props.img} className="img mt-2 rounded mx-auto d-block" />
                     <div className="card-body ">
@@ -33,7 +32,6 @@ export const CardPeople = (props) => {
                     </div>
                 </div >
             </div >
-
         </>
     );
 };

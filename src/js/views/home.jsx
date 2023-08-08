@@ -10,7 +10,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<>
-			<h1 className="title fw-bold ms-5">Character</h1>
+			<h1 className="title fw-bold ms-5">Characters</h1>
 			<hr className="border border-warning border-2 opacity-50" />
 			<div className="container   d-flex overflow-x-scroll   gap-3  ancho">
 				{store.people.map((character, index) => {

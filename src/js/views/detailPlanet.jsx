@@ -17,7 +17,7 @@ export const Planet = () => {
         <>
             {planet.map((item, idex) => {
                 return (
-                    <div className="container card mb-3" >
+                    <div className="container card mb-3 bg-dark text-white" >
                         <div className="row g-0">
                             <div className="col-md-4 mt-2">
                                 <img src={`https://starwars-visualguide.com/assets/img/planets/${item.uid}.jpg`} className="rounded mx-auto d-block img" alt="..." />
@@ -31,7 +31,7 @@ export const Planet = () => {
                             </div>
                         </div>
                         <hr />
-                        <div className="row bg-light text-danger mt-2 mb-2">
+                        <div className="row mt-2 mb-5">
                             <div className="col-2 fw_bold">Name</div>
                             <div className="col-2 fw_bold">Diameter</div>
                             <div className="col-2 fw_bold">Population</div>

@@ -19,7 +19,7 @@ export const Navbar = () => {
 					<img src={startWarsImage} className="  ms-3 d-inline-block aling-text-top " alt="logo" />
 				</Link>
 				<div className="dropdown-center me-5">
-					<a className="btn btn-primary dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<a className="btn btn-light dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Favorities {store.todolist.length}
 					</a>
 					<ul className="dropdown-menu dropdown-menu-end " >

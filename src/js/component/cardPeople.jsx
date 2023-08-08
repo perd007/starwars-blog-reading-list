@@ -16,8 +16,8 @@ export const CardPeople = (props) => {
     return (
         <>
 
-            <div className=" row m-3" >
-                <div className="card col-12  "  >
+            <div className="  row m-3 " >
+                <div className="card col-12 "  >
                     <img src={props.img} className="img mt-2 rounded mx-auto d-block" />
                     <div className="card-body ">
                         <h5 className="card-title">{props.name}</h5>

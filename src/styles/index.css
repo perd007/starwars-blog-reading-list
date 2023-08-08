@@ -1,3 +1,13 @@
 /* 
     General Styles
 */
+p{
+    margin: 0px;
+}
+.title{
+
+    font-family: "Droid Sans", arial, verdana, sans-serif;
+    color: rgb(255, 210, 9);
+    margin-top: 10px;
+
+}

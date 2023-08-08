@@ -46,7 +46,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getHandleChange: (favorite) => {
 				//console.log("entro en getHandleChange" + favorite);
 				const store = getStore();
-				setStore({ todolist: [...store.todolist, favorite] })
+				const items = store.todolist.filter((item) => item == favorite)
+				if (items.length === 0)
+					setStore({ todolist: [...store.todolist, favorite] })
 				//console.log("todo list " + store.todolist);
 			},
 			//borrar contaco
